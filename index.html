@@ -8,12 +8,47 @@
         body {
             background-color: #000; /* Black background */
             color: #FFF; /* White text color */
+            overflow: hidden; /* Hide overflow content */
+            margin: 0; /* Remove default margin */
+            display: flex;
+            height: 100vh;
+        }
+
+        #left-panel {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        #right-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            font-style: italic;
+            animation: fadeInOut 16s linear infinite; /* Change duration based on the number of messages */
+            text-align: center;
+            position: relative;
+        }
+
+        @keyframes fadeInOut {
+            0%, 12.5%, 25%, 37.5%, 50%, 62.5%, 75%, 87.5%, 100% {
+                opacity: 0;
+            }
+
+            6.25%, 18.75%, 31.25%, 43.75%, 56.25%, 68.75%, 81.25%, 93.75% {
+                opacity: 1;
+            }
         }
 
         h1 {
             color: #FF4081; /* Pink color */
             font-weight: bold;
             animation: rainbowAnimation 3s infinite alternate; /* Adding rainbow color animation */
+            text-align: center; /* Center align the text */
+            margin-top: 30vh; /* Adjust top margin for centering */
         }
 
         @keyframes rainbowAnimation {
@@ -25,29 +60,64 @@
             100% { color: #FF4081; } /* Back to Pink */
         }
 
-        p {
-            color: #001F3F; /* Dark Blue color */
-            font-size: 18px; /* Set font size to 18 pixels */
-            font-weight: bold; /* Make text bold */
-            font-style: italic; /* Make text italic */
-            animation: flyIn 2s ease-out; /* Adding flying animation */
+        /* Background Animation for Crackers Burst */
+        .crackers-burst {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            background: url('crackers.png') no-repeat center center fixed;
+            background-size: cover;
+            animation: burstAnimation 10s infinite;
+            z-index: -1;
         }
 
-        @keyframes flyIn {
-            0% { opacity: 0; transform: translateY(-50px); }
-            100% { opacity: 1; transform: translateY(0); }
+        @keyframes burstAnimation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Background Animation for Flowers */
+        .flowers {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            background: url('flowers.png') no-repeat center center fixed;
+            background-size: cover;
+            animation: flowersAnimation 15s infinite;
+            z-index: -2;
+        }
+
+        @keyframes flowersAnimation {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        #video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     </style>
 </head>
 <body>
 
-    <h1>Happy Birthday Ghochu!!!</h1>
+    <!-- Background Animation for Crackers Burst -->
+    <div class="crackers-burst"></div>
 
-    <!-- Video Section with Autoplay and YouTube logo removal -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/XzC-kA6oqls?autoplay=1&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- Background Animation for Flowers -->
+    <div class="flowers"></div>
 
-    <!-- Text Section with flying animation -->
-    <p>Happy Birthday to the most incredible friend! 🎉 On this special day, I celebrate not just the passing of another year in your life but the wonderful person you are. Your laughter is infectious, your kindness is boundless, and your presence makes every moment brighter. May this year bring you immense joy, unforgettable memories, and all the success you deserve. Thank you for being the amazing friend that you are. Here's to another year of adventures, laughter, and shared moments. May your day be as fantastic as you are! Cheers to you, my dear friend. 🥳🎂</p>
+    <div id="left-panel">
+        <!-- Video Section with Autoplay and YouTube logo removal -->
+        <iframe id="video" src="https://www.youtube.com/embed/XzC-kA6oqls?autoplay=1&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <div id="right-panel">
+        <h1>Happy Birthday Ghochu!!!</h1>
+        <p>Happy Birthday to the most incredible friend! 🎉 On this special day, I celebrate not just the passing of another year in your life but the wonderful person you are. Your laughter is infectious, your kindness is boundless, and your presence makes every moment brighter. May this year bring you immense joy, unforgettable memories, and all the success you deserve. Thank you for being the amazing friend that you are. Here's to another year of adventures, laughter, and shared moments. May your day be as fantastic as you are! Cheers to you, my dear friend. 🥳🎂</p>
+    </div>
 
 </body>
 </html>
